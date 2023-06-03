@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window
+    x:Class="Frost_ToolBox.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Frost_ToolBox"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    x:Name="mainWindow"
+    >   
+
+    <NavigationView x:Name="toolNv" PaneDisplayMode="Left" SelectionChanged="toolNv_SelectionChanged" IsBackButtonVisible="Collapsed" PaneTitle="工具">
+        <NavigationView.MenuItems>
+            <NavigationViewItem Icon="Home" Content="主页" Tag="HomePage"/>
+            <NavigationViewItemHeader Content="管理"/>
+            <NavigationViewItem Icon="AllApps" Content="标签管理" Tag="TagManagerPage"/>
+            <NavigationViewItemHeader Content="编辑"/>
+            <NavigationViewItem Icon="FullScreen" Content="图片缩放" Tag="PicScalePage"/>
+        </NavigationView.MenuItems>
+
+        <NavigationView.AutoSuggestBox>
+            <AutoSuggestBox QueryIcon="Find" AutomationProperties.Name="Search"/>
+        </NavigationView.AutoSuggestBox>
+
+        <Frame x:Name="contentFrame"/>
+    </NavigationView>
+</Window>

@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "Frost ToolBox (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "Frost ToolBox (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}
