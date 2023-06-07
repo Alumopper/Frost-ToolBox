@@ -10,7 +10,7 @@
   <Identity
     Name="f1066660-ea24-41c4-b11c-9313bfbdb7bf"
     Publisher="CN=Alumopper"
-    Version="0.1.1.0" />
+    Version="0.1.2.0" />
 
   <mp:PhoneIdentity PhoneProductId="f1066660-ea24-41c4-b11c-9313bfbdb7bf" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 

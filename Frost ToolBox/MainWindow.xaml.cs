@@ -10,6 +10,10 @@ using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using Windows.Storage;
+using Microsoft.UI;
+using System;
+using WinRT.Interop;
+using Microsoft.UI.Windowing;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -21,20 +25,33 @@ namespace FrostLeaf_ToolBox
     /// </summary>
     public sealed partial class MainWindow : Window
     {
-        public static Window mainWindow;
+        private static Window mainWindow;
+        public static Window Window
+        {
+            get => mainWindow;
+        }
 
-        Dictionary<string,string> toolNames = new ()
+        readonly Dictionary<string,string> toolNames = new ()
         {
             { "标签管理","TagManagerPage" },
-            { "图片缩放","PicScalePage" }
+            { "图片缩放","PicScalePage" },
         };
-        ObservableCollection<string> suggestions = new ObservableCollection<string>();
-
+        readonly ObservableCollection<string> suggestions = new();
+        
         public MainWindow()
         {
             this.InitializeComponent(); 
             this.Title = "FrostLeaf ToolBox";
             MainWindow.mainWindow = this;
+            GetAppWindowForCurrentWindow().TitleBar.ExtendsContentIntoTitleBar = true;
+            FrostLeaf.Instance.log = new Log(logBar);
+        }
+
+        private AppWindow GetAppWindowForCurrentWindow()
+        {
+            IntPtr hWnd = WindowNative.GetWindowHandle(this);
+            WindowId wndId = Win32Interop.GetWindowIdFromWindow(hWnd);
+            return AppWindow.GetFromWindowId(wndId);
         }
 
         private void toolNv_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)

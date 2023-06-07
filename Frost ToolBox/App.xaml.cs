@@ -17,6 +17,13 @@ namespace FrostLeaf_ToolBox
         public App()
         {
             this.InitializeComponent();
+            UnhandledException += App_UnhandledException;
+        }
+
+        private void App_UnhandledException(object sender, UnhandledExceptionEventArgs e)
+        {
+            e.Handled = true;
+            FrostLeaf.Instance.log.Exception(e.Exception);
         }
 
         /// <summary>

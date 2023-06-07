@@ -23,6 +23,7 @@ using Windows.Storage.AccessCache;
 using Windows.Storage.Pickers;
 using FrostLeaf_ToolBox.Pages;
 using FrostLeaf_ToolBox;
+using System.ComponentModel;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -142,7 +143,7 @@ namespace FrostLeaf_ToolBox.Pages
             FolderPicker openPicker = new();
 
             // Retrieve the window handle (HWND) of the current WinUI 3 window.
-            var hWnd = WinRT.Interop.WindowNative.GetWindowHandle(MainWindow.mainWindow);
+            var hWnd = WinRT.Interop.WindowNative.GetWindowHandle(MainWindow.Window);
 
             // Initialize the folder picker with the window handle (HWND).
             WinRT.Interop.InitializeWithWindow.Initialize(openPicker, hWnd);
@@ -206,7 +207,7 @@ namespace FrostLeaf_ToolBox.Pages
             FolderPicker openPicker = new();
 
             // Retrieve the window handle (HWND) of the current WinUI 3 window.
-            var hWnd = WinRT.Interop.WindowNative.GetWindowHandle(MainWindow.mainWindow);
+            var hWnd = WinRT.Interop.WindowNative.GetWindowHandle(MainWindow.Window);
 
             // Initialize the folder picker with the window handle (HWND).
             WinRT.Interop.InitializeWithWindow.Initialize(openPicker, hWnd);

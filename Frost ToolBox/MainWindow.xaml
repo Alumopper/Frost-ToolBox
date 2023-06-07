@@ -25,7 +25,17 @@
             <NavigationView.AutoSuggestBox>
                 <AutoSuggestBox TextChanged="AutoSuggestBox_TextChanged" QuerySubmitted="AutoSuggestBox_QuerySubmitted" AutomationProperties.Name="Search" QueryIcon="Find"/>
             </NavigationView.AutoSuggestBox>
-            <Frame x:Name="contentFrame"></Frame>
+            <NavigationView.FooterMenuItems>
+                <NavigationViewItem Icon="Play" Content="启动游戏" Tag="GameStartPage"/>
+            </NavigationView.FooterMenuItems>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Frame Grid.Row="0" x:Name="contentFrame"/>
+                <InfoBar Grid.Row="1" x:Name="logBar"/>
+            </Grid>
         </NavigationView>
     </Grid>
 </Window>

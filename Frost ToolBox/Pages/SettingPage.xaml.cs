@@ -48,7 +48,7 @@ namespace FrostLeaf_ToolBox.Pages
         {
             (sender as Button).IsEnabled = false;
             FolderPicker openPicker = new();
-            var hWnd = WinRT.Interop.WindowNative.GetWindowHandle(MainWindow.mainWindow);
+            var hWnd = WinRT.Interop.WindowNative.GetWindowHandle(MainWindow.Window);
             WinRT.Interop.InitializeWithWindow.Initialize(openPicker, hWnd);
             openPicker.SuggestedStartLocation = PickerLocationId.Desktop;
             openPicker.FileTypeFilter.Add("*");
@@ -68,7 +68,7 @@ namespace FrostLeaf_ToolBox.Pages
             (sender as Button).IsEnabled = false;
             resourcepackPath.Description = "正在检索材质文件";
             FolderPicker openPicker = new();
-            var hWnd = WinRT.Interop.WindowNative.GetWindowHandle(MainWindow.mainWindow);
+            var hWnd = WinRT.Interop.WindowNative.GetWindowHandle(MainWindow.Window);
             WinRT.Interop.InitializeWithWindow.Initialize(openPicker, hWnd);
             openPicker.SuggestedStartLocation = PickerLocationId.Desktop;
             openPicker.FileTypeFilter.Add("*");

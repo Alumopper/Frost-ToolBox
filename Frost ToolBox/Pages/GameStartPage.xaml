@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page
+    x:Class="FrostLeaf_ToolBox.Pages.GameStartPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:FrostLeaf_ToolBox.Pages"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    >
+
+    <Page.Background>
+        <AcrylicBrush TintColor="White" TintOpacity="0.0" FallbackColor="White"/>
+    </Page.Background>
+
+    <Grid x:Name="qwq">
+        <TabView CloseButtonOverlayMode="OnPointerOver" x:Name="gameTabs"
+                 AddTabButtonClick="TabView_AddTabButtonClick" TabCloseRequested="TabView_TabCloseRequested" Loaded="TabView_Loaded"
+                 Height="{Binding ElementName=qwq, Path=ActualHeight}"
+                 >
+        </TabView>
+    </Grid>
+</Page>

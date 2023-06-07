@@ -1,5 +1,4 @@
 ﻿using FrostLeaf_ToolBox.Pages;
-using FrostLeaf_ToolBox.Pages;
 using FrostLeaf_ToolBox.Utils;
 using Microsoft.UI.Xaml.Controls;
 using System;
@@ -27,6 +26,8 @@ namespace FrostLeaf_ToolBox
 
         public Dictionary<string, Lazy<IFrostPage>> pages = new();
 
+        public Log log;
+
         private FrostLeaf()
         {
             //读取设置json文件中的设置
@@ -35,6 +36,7 @@ namespace FrostLeaf_ToolBox
             pages["PicScalePage"] = new Lazy<IFrostPage>(() => new PicScalePage());
             pages["SettingPage"] = new Lazy<IFrostPage>(() => new SettingPage());
             pages["TagManagerPage"] = new Lazy<IFrostPage>(() => new TagManagerPage());
+            pages["GameStartPage"] = new Lazy<IFrostPage>(() => new GameStartPage());
         }
     }
 }
