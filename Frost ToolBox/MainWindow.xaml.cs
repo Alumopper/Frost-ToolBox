@@ -44,7 +44,7 @@ namespace FrostLeaf_ToolBox
             this.Title = "FrostLeaf ToolBox";
             MainWindow.mainWindow = this;
             GetAppWindowForCurrentWindow().TitleBar.ExtendsContentIntoTitleBar = true;
-            FrostLeaf.Instance.log = new Log(logBar);
+            FrostLeaf.Instance.log = new Logger(logBar);
         }
 
         private AppWindow GetAppWindowForCurrentWindow()

@@ -13,7 +13,7 @@
         <AcrylicBrush TintColor="White" TintOpacity="0.0" FallbackColor="White"/>
     </Page.Background>
 
-    <Grid x:Name="qwq">
+    <Grid x:Name="qwq" Margin="0,20,0,0">
         <TabView CloseButtonOverlayMode="OnPointerOver" x:Name="gameTabs"
                  AddTabButtonClick="TabView_AddTabButtonClick" TabCloseRequested="TabView_TabCloseRequested" Loaded="TabView_Loaded"
                  Height="{Binding ElementName=qwq, Path=ActualHeight}"

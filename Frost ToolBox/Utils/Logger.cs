@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace FrostLeaf_ToolBox.Utils
 {
-    public class Log
+    public class Logger
     {
         InfoBar infoBar;
 
-        public Log(InfoBar infoBar)
+        public Logger(InfoBar infoBar)
         {
             this.infoBar = infoBar;
         }

@@ -1,3 +1,5 @@
+//#define TEST
+
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -15,6 +17,7 @@ using Microsoft.UI.Xaml.Navigation;
 using Windows.Storage;
 using Windows.Storage.Pickers;
 using System.Threading.Tasks;
+using FrostLeaf_ToolBox.Pages.Game;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -26,6 +29,8 @@ namespace FrostLeaf_ToolBox.Pages
     /// </summary>
     public sealed partial class GameStartPage : Page, IFrostPage
     {
+        public TabView GameTabs { get => gameTabs; }
+
         public List<string> versions = new();
 
         public GameStartPage()
@@ -99,11 +104,8 @@ namespace FrostLeaf_ToolBox.Pages
             }
             else
             {
-                //
-            }
-            if(sender.TabItems.Count == 0)
-            {
-                TabView_Loaded(sender, null);
+                //ÊÇÓÎÏ·´°¿Ú
+                sender.TabItems.Remove(args.Tab);
             }
         }
 
@@ -114,6 +116,18 @@ namespace FrostLeaf_ToolBox.Pages
                 (sender as TabView).TabItems.Add(CreateNewTab());
                 (sender as TabView).SelectedIndex = 0;
             }
+#if TEST
+            TabViewItem tab = new()
+            {
+                Header = "Minecraft",
+                IconSource = new SymbolIconSource() { Symbol = Symbol.Send }
+            };
+            Frame f = new();
+            f.Navigate(typeof(Game.MinecraftPage));
+            tab.Content = f;
+
+            (sender as TabView).TabItems.Add(tab);
+#endif
         }
 
         private static TabViewItem CreateNewTab()
@@ -126,6 +140,7 @@ namespace FrostLeaf_ToolBox.Pages
             Frame f = new();
             f.Navigate(typeof(Game.GameStartHomePage));
             tab.Content = f;
+            (f.Content as GameStartHomePage).Flush();
             return tab;
         }
     }

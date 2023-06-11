@@ -11,6 +11,22 @@
     >
 
     <Grid>
-
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Stretch" Margin="30,15,0,0">
+            <ToggleSwitch x:Name="logToggle" OffContent="日志解析" OnContent="日志解析" Toggled="logToggle_Toggled" Margin="5"/>
+            <ToggleSwitch x:Name="scrollToBottom" OffContent="自动滚动" OnContent="自动滚动" Toggled="scrollToBottom_Toggled" Margin="5" IsOn="True"/>
+            <ToggleButton x:Name="infoButton" Content="Info" HorizontalAlignment="Right" Click="btnToggle_Click" Margin="5" IsChecked="True"/>
+            <ToggleButton x:Name="warnButton" Content="Warn" HorizontalAlignment="Right" Click="btnToggle_Click" Margin="5" IsChecked="True"/>
+            <ToggleButton x:Name="errorButton" Content="Error" HorizontalAlignment="Right" Click="btnToggle_Click" Margin="5" IsChecked="True"/>
+            <ToggleButton x:Name="fatalButton" Content="Fatal" HorizontalAlignment="Center" Click="btnToggle_Click" Margin="5" IsChecked="True"/>
+        </StackPanel>
+        <Border BorderBrush="Gray" CornerRadius="10" BorderThickness="1" Grid.Row="1" Margin="10" Padding="10">
+            <ScrollViewer x:Name="scroll" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" HorizontalScrollMode="Disabled">
+                <ItemsControl x:Name="logList"/>
+            </ScrollViewer>
+        </Border>
     </Grid>
 </Page>

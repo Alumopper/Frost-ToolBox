@@ -83,5 +83,34 @@ namespace FrostLeaf_ToolBox.Pages.Game
         {
             Versions.ItemsSource = (FrostLeaf.Instance.pages["GameStartPage"].Value as GameStartPage).versions;
         }
+
+        private async void GameStartButton_Click(SplitButton sender, SplitButtonClickEventArgs args)
+        {
+            if(Versions.SelectedItem == null)
+            {
+                return;
+            }
+            //获取脚本文件
+            StorageFile batFile = await ApplicationData.Current.LocalFolder.GetFileAsync("Versions\\" + Versions.SelectedItem.ToString());
+            //创建新窗口
+            TabViewItem tab = new()
+            {
+                Header = batFile.Name,
+                IconSource = new SymbolIconSource() { Symbol = Symbol.Send }
+            };
+            Frame f = new();
+            f.Navigate(typeof(MinecraftPage));
+            tab.Content = f;
+
+            var gameTabs = (FrostLeaf.Instance.pages["GameStartPage"].Value as GameStartPage).GameTabs;
+            int index = gameTabs.SelectedIndex;
+            gameTabs.TabItems.Insert(index, tab);
+            gameTabs.TabItems.RemoveAt(index+1);
+            gameTabs.SelectedItem = tab;
+
+            //启动Minecraft
+            (f.Content as MinecraftPage).minecraft = new(batFile, f.Content as MinecraftPage);
+            (f.Content as MinecraftPage).minecraft.Start();
+        }
     }
 }

@@ -26,7 +26,9 @@
             <TextBlock Text="选择一个版本启动脚本启动游戏，使游戏实例能够被工具箱统一管理和监测" Margin="30,30,0,0" TextTrimming="CharacterEllipsis"/>
             <TextBlock Text="打开HMCL等启动器，生成对应版本的启动脚本，将启动脚本拖入此页面，即可将脚本添加至工具箱中。" Margin="30,10,0,0" TextTrimming="CharacterEllipsis"/>
         </StackPanel>
-        <SplitButton Grid.Row="1" Content="选择版本" x:Name="GameStartButton" Margin="30" VerticalAlignment="Bottom" HorizontalAlignment="Right" Height="60" Width="240" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" >
+        <SplitButton Grid.Row="1" Content="选择版本" x:Name="GameStartButton" Margin="30" VerticalAlignment="Bottom" HorizontalAlignment="Right" Height="60" Width="240" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" 
+                     Click="GameStartButton_Click"
+                     >
             <SplitButton.Flyout>
                 <Flyout Placement="RightEdgeAlignedBottom">
                     <ListBox x:Name="Versions" SingleSelectionFollowsFocus="False" SelectionChanged="Versions_SelectionChanged"/>

@@ -26,7 +26,7 @@ namespace FrostLeaf_ToolBox
 
         public Dictionary<string, Lazy<IFrostPage>> pages = new();
 
-        public Log log;
+        public Logger log;
 
         private FrostLeaf()
         {
