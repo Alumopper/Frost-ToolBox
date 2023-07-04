@@ -19,7 +19,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0">
-            <TextBlock Text="标签管理" Margin="30,30,0,0" FontSize="32" TextTrimming="CharacterEllipsis"/>
+            <TextBlock Text="标签管理" Margin="30,50,0,0" FontSize="32" TextTrimming="CharacterEllipsis"/>
             <TextBlock Text="读取数据包中使用过的所有标签，并整合到一个文件中便于识别和管理" Margin="30,30,0,0" TextTrimming="CharacterEllipsis"/>
             <TextBlock Text="选择文件夹或文件到此处开始读取" Margin="30,10,0,0" TextTrimming="CharacterEllipsis"/>
         </StackPanel>
@@ -45,7 +45,7 @@
             </Grid.RowDefinitions>
             <Border Grid.Row="0" BorderThickness="1" CornerRadius="10" x:Name="qwq">
                 <ScrollViewer x:Name="scrollViewer">
-                    <StackPanel x:Name="tagPreview" Margin="30" HorizontalAlignment="Stretch" VerticalAlignment="Center" CanBeScrollAnchor="True" Background="Transparent">
+                    <StackPanel x:Name="tagPreview" Margin="30" HorizontalAlignment="Center" VerticalAlignment="Center" CanBeScrollAnchor="True" Background="Transparent">
                         <TextBlock x:Name="tipText" Text="还没开始分析呢~" Visibility="Visible" Foreground="DarkGray" TextWrapping="Wrap"/>
                         <ProgressBar x:Name="readProgressBar" IsIndeterminate="True" Visibility="Collapsed"/>
                         <TreeView x:Name="result">

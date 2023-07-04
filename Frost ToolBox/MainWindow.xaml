@@ -17,10 +17,15 @@
         <NavigationView x:Name="toolNv" PaneDisplayMode="Left" SelectionChanged="toolNv_SelectionChanged" IsBackButtonVisible="Collapsed" PaneTitle="霜叶工具箱" OpenPaneLength="280">
             <NavigationView.MenuItems>
                 <NavigationViewItem Icon="Home" Content="主页" Tag="HomePage" IsSelected="True"/>
+                <NavigationViewItem Icon="DisableUpdates" Content="测试页面" Tag="TestPage" IsSelected="True"/>
                 <NavigationViewItemHeader Content="管理"/>
                 <NavigationViewItem Icon="AllApps" Content="标签管理" Tag="TagManagerPage"/>
+                <NavigationViewItem Icon="Remote" Content="资源包合并" Tag="ResourcePackUnionPage"/>
+                <NavigationViewItem Icon="Bookmarks" Content="函数调用层次" Tag="FunctionCallStackPage"/>
+                <NavigationViewItem Icon="Directions" Content="命令占用测试" Tag="CommandTestPage"/>
                 <NavigationViewItemHeader Content="编辑"/>
                 <NavigationViewItem Icon="FullScreen" Content="图片缩放" Tag="PicScalePage"/>
+                <NavigationViewItem Icon="Edit" Content="MCMOD编辑" Tag="MCMODEditorPage"/>
             </NavigationView.MenuItems>
             <NavigationView.AutoSuggestBox>
                 <AutoSuggestBox TextChanged="AutoSuggestBox_TextChanged" QuerySubmitted="AutoSuggestBox_QuerySubmitted" AutomationProperties.Name="Search" QueryIcon="Find"/>

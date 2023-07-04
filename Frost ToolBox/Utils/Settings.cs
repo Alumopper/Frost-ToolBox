@@ -13,25 +13,29 @@ namespace FrostLeaf_ToolBox.Utils
     {
         public List<string> shortcuts;
         public List<string> Shortcuts { get => shortcuts; set => shortcuts = value; }
-        public ProjectSettings project;
-        public ProjectSettings Project { get => project; set => project = value; }
-
-        public Settings() {
-            project = new ProjectSettings();
+        public ResourceSettings resourceSettings;
+        public ResourceSettings ResourceSettings { get => resourceSettings; set => resourceSettings = value; }
+        public string resourceFolder;
+        public string ResourceFolder { get => resourceFolder; set => resourceFolder = value; }
+        
+        public Settings()
+        {
             shortcuts = new List<string>();
+            resourceSettings = new ResourceSettings();
+            resourceFolder = "";
         }
 
-        public async static void Read(Settings settings)
+        public async static Task<int> Read(Settings settings)
         {
             StorageFile f = await StorageFile.GetFileFromApplicationUriAsync(new Uri("ms-appx:///Settings/settings.json"));
             //读取设置json文件中的设置
-            using (StreamReader stream = new(await f.OpenStreamForReadAsync()))
-            {
-                string json = await stream.ReadToEndAsync();
-                Settings wf = JsonConvert.DeserializeObject<Settings>(json);
-                settings.Shortcuts = wf.Shortcuts;
-                settings.Project = wf.Project;
-            }
+            using StreamReader stream = new(await f.OpenStreamForReadAsync());
+            string json = await stream.ReadToEndAsync();
+            Settings wf = JsonConvert.DeserializeObject<Settings>(json);
+            settings.Shortcuts = wf.Shortcuts;
+            settings.ResourceSettings = wf.ResourceSettings;
+            settings.resourceFolder = wf.resourceFolder;
+            return 0;
         }
 
         public async static void Write(Settings settings)
@@ -43,7 +47,7 @@ namespace FrostLeaf_ToolBox.Utils
         }
     }
 
-    public class ProjectSettings
+    public class ResourceSettings
     {
         public string datapack;
         public string Datapack { get => datapack; set => datapack = value; }
@@ -52,7 +56,8 @@ namespace FrostLeaf_ToolBox.Utils
         public List<string> textureFolders;
         public List<string> TextureFolders { get => textureFolders; set => textureFolders = value; }
 
-        public ProjectSettings() 
+
+        public ResourceSettings() 
         {
             datapack = "";
             resourcepack = "";

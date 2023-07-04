@@ -1,8 +1,9 @@
 ﻿{
   "shortcuts": [],
-  "project": {
+  "resourceSettings": {
     "datapack": "",
     "resourcepack": "",
-    "textureFolders": [] 
-  }
+    "textureFolders": []
+  },
+  "resourceFolder": "D:\\FrostLeaf Toolbox"
 }

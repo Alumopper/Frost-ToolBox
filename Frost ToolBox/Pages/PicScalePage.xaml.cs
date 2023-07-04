@@ -185,7 +185,7 @@ namespace FrostLeaf_ToolBox.Pages
         {
             ReadingPicTip.IsOpen = true;
             (sender as MenuFlyoutItem).IsEnabled = false;
-            foreach (var item in FrostLeaf.Instance.settings.Project.TextureFolders)
+            foreach (var item in FrostLeaf.Instance.settings.ResourceSettings.TextureFolders)
             {
                 StorageFolder folder = await StorageFolder.GetFolderFromPathAsync(item);
                 if (folder != null)
@@ -231,7 +231,7 @@ namespace FrostLeaf_ToolBox.Pages
 
         public void Flush()
         {
-            if(FrostLeaf.Instance.settings.project.resourcepack != "")
+            if(FrostLeaf.Instance.settings.ResourceSettings.resourcepack != "")
             {
                 readFromProject.IsEnabled = true;
             }

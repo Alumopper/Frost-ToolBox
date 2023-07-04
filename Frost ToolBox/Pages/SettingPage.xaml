@@ -67,7 +67,7 @@
                         <RepositionThemeTransition IsStaggeringEnabled="False"/>
                     </StackPanel.ChildrenTransitions>
 
-                    <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="工程设置"/>
+                    <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="资源设置"/>
 
                     <labs:SettingsExpander Header="工程配置" x:Name="projectSettings">
                         <labs:SettingsExpander.HeaderIcon>
@@ -82,13 +82,16 @@
                             </labs:SettingsCard>
                         </labs:SettingsExpander.Items>
                     </labs:SettingsExpander>
-
+                    <labs:SettingsCard Header="工具箱资源地址" Description="未选择" x:Name="resourcePath">
+                        <Button Click="Button_Click_3"  Content="选择"/>
+                    </labs:SettingsCard>
+                    
                     <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="关于"/>
 
                     <labs:SettingsExpander Header="霜叶工具箱" Description="FrostLeaf ToolBox">
-                        <TextBlock Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                        <TextBlock x:Name="version" Foreground="{ThemeResource TextFillColorSecondaryBrush}"
                                Style="{StaticResource CaptionTextBlockStyle}"
-                               Text="Version 0.1.1" />
+                               Text=""/>
                         <labs:SettingsExpander.Items>
                             <labs:SettingsCard Header="Github">
                                 <HyperlinkButton Content="FrostLeaf ToolBox" NavigateUri="https://github.com/Alumopper/FrostLeaf-ToolBox"/>

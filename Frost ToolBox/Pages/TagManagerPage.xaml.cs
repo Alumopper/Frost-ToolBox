@@ -1,18 +1,15 @@
-using FrostLeaf_ToolBox.Pages;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
-using Windows.Storage.Pickers;
-using Windows.Storage;
 using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Text.RegularExpressions;
-using System.Linq;
-using FrostLeaf_ToolBox.Utils;
-using Microsoft.UI.Xaml.Media.Animation;
 using System.ComponentModel;
-using System.Threading.Tasks;
+using System.IO;
+using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
+using System.Threading.Tasks;
+using Windows.Storage;
+using Windows.Storage.Pickers;
 using Windows.Storage.Provider;
 
 // To learn more about WinUI, the WinUI project structure,
@@ -41,7 +38,7 @@ namespace FrostLeaf_ToolBox.Pages
 
         public void Flush()
         {
-            if (FrostLeaf.Instance.settings.project.datapack != "")
+            if (FrostLeaf.Instance.settings.ResourceSettings.datapack != "")
             {
                 readFromProject.IsEnabled = true;
             }
@@ -57,7 +54,7 @@ namespace FrostLeaf_ToolBox.Pages
             ReadingPicTip.IsOpen = true;
             (sender as MenuFlyoutItem).IsEnabled = false;
             //获取文件夹
-            StorageFolder folder = await StorageFolder.GetFolderFromPathAsync(FrostLeaf.Instance.settings.Project.Datapack);
+            StorageFolder folder = await StorageFolder.GetFolderFromPathAsync(FrostLeaf.Instance.settings.ResourceSettings.Datapack);
             if (folder != null)
             {
                 this.folder = folder;
@@ -105,6 +102,7 @@ namespace FrostLeaf_ToolBox.Pages
             //tipText.Visibility = Visibility.Visible;
             //tipText.Text = "正在读取文件: ";
             readProgressBar.Visibility = Visibility.Visible;
+            tagPreview.HorizontalAlignment = HorizontalAlignment.Stretch;
             //开始遍历文件夹中的全部文件
             BackgroundWorker worker = new ()
             {
@@ -148,6 +146,7 @@ namespace FrostLeaf_ToolBox.Pages
                     result.RootNodes[1].Children.Add(scb);
                 }
                 result.Visibility = Visibility.Visible;
+                tagPreview.HorizontalAlignment = HorizontalAlignment.Center;
             });
             worker.RunWorkerAsync(folder);
         }

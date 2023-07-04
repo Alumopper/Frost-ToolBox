@@ -18,14 +18,19 @@
   <ItemGroup>
     <None Remove="Assets\101868504_p0.jpg" />
     <None Remove="Assets\89589460_p0.png" />
+    <None Remove="Pages\ChildPages\ServerVersionPage.xaml" />
+    <None Remove="Pages\CommandTestPage.xaml" />
+    <None Remove="Pages\Dialog\ProgressDisplayDialog.xaml" />
     <None Remove="Pages\Dialog\ResetSettings.xaml" />
     <None Remove="Pages\GameStartPage.xaml" />
     <None Remove="Pages\Game\GameStartHomePage.xaml" />
     <None Remove="Pages\Game\MinecraftPage.xaml" />
+    <None Remove="Pages\Game\ResourcePackUnion.xaml" />
     <None Remove="Pages\HomePage.xaml" />
     <None Remove="Pages\PicScalePage.xaml" />
     <None Remove="Pages\SettingPage.xaml" />
     <None Remove="Pages\TagManagerPage.xaml" />
+    <None Remove="Pages\TODOPage.xaml" />
     <None Remove="Settings\settings.json" />
     <None Remove="Settings\settings_default.json" />
     <None Remove="Versions\versions.json" />
@@ -78,6 +83,32 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Settings\Projects\" />
+    <Folder Include="UI\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Pages\Dialog\ProgressDisplayDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Pages\ChildPages\ServerVersionPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Pages\Game\ResourcePackUnion.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Pages\TODOPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Pages\CommandTestPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Page Update="Pages\Game\MinecraftPage.xaml">

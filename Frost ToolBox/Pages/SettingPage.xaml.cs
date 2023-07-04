@@ -21,6 +21,7 @@ using Windows.Storage;
 using CommunityToolkit.Labs.WinUI;
 using FrostLeaf_ToolBox;
 using FrostLeaf_ToolBox.Pages;
+using System.Threading.Tasks;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -35,12 +36,32 @@ namespace FrostLeaf_ToolBox.Pages
         public SettingPage()
         {
             this.InitializeComponent();
+            Flush();
         }
 
         public void Flush()
         {
-            resourcepackPath.Description = FrostLeaf.Instance.settings.Project.Resourcepack == ""?"未选择": FrostLeaf.Instance.settings.Project.Resourcepack;
-            datapackPath.Description = FrostLeaf.Instance.settings.Project.Datapack == ""?"未选择": FrostLeaf.Instance.settings.Project.Datapack;
+            resourcepackPath.Description = FrostLeaf.Instance.settings.ResourceSettings.Resourcepack == ""?"未选择": FrostLeaf.Instance.settings.ResourceSettings.Resourcepack;
+            datapackPath.Description = FrostLeaf.Instance.settings.ResourceSettings.Datapack == ""?"未选择": FrostLeaf.Instance.settings.ResourceSettings.Datapack;
+            version.Text = FrostLeaf.Instance.Version;
+            //检查工具箱资源文件夹地址信息是否有效
+            if (FrostLeaf.Instance.settings.resourceFolder == "")
+            {
+                resourcePath.Description = "未选择";
+            }
+            else
+            {
+                if (Directory.Exists(FrostLeaf.Instance.settings.resourceFolder))
+                {
+                    resourcePath.Description = FrostLeaf.Instance.settings.resourceFolder;
+                }
+                else
+                {
+                    FrostLeaf.Instance.log.Error($"资源文件夹地址无效: {FrostLeaf.Instance.settings.resourceFolder}");
+                    FrostLeaf.Instance.settings.resourceFolder = "";
+                    resourcePath.Description = "未选择";
+                }
+            }
         }
 
         //数据包
@@ -56,7 +77,7 @@ namespace FrostLeaf_ToolBox.Pages
             if (folder != null)
             {
                 datapackPath.Description = folder.Path;
-                FrostLeaf.Instance.settings.Project.Datapack = folder.Path;
+                FrostLeaf.Instance.settings.ResourceSettings.Datapack = folder.Path;
                 Settings.Write(FrostLeaf.Instance.settings);
             }
             (sender as Button).IsEnabled = true;
@@ -79,9 +100,9 @@ namespace FrostLeaf_ToolBox.Pages
                 if(fs.Count > 0)
                 {
                     resourcepackPath.Description = folder.Path;
-                    FrostLeaf.Instance.settings.Project.Resourcepack = folder.Path;
+                    FrostLeaf.Instance.settings.ResourceSettings.Resourcepack = folder.Path;
                     Settings.Write(FrostLeaf.Instance.settings);
-                    FrostLeaf.Instance.settings.Project.textureFolders = fs;
+                    FrostLeaf.Instance.settings.ResourceSettings.textureFolders = fs;
                 }
                 else
                 {
@@ -113,6 +134,26 @@ namespace FrostLeaf_ToolBox.Pages
                 Flush();
             }
 
+        }
+        
+        private async void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            //选择新的文件夹
+            (sender as Button).IsEnabled = false;
+            resourcepackPath.Description = "正在选择服务端数据文件夹";
+            FolderPicker openPicker = new();
+            var hWnd = WinRT.Interop.WindowNative.GetWindowHandle(MainWindow.Window);
+            WinRT.Interop.InitializeWithWindow.Initialize(openPicker, hWnd);
+            openPicker.SuggestedStartLocation = PickerLocationId.Desktop;
+            openPicker.FileTypeFilter.Add("*");
+            StorageFolder folder = await openPicker.PickSingleFolderAsync();
+            if (folder != null)
+            {
+                resourcePath.Description = folder.Path;
+                FrostLeaf.Instance.settings.resourceFolder = folder.Path;
+                Settings.Write(FrostLeaf.Instance.settings);
+            }
+            (sender as Button).IsEnabled = true;
         }
     }
 }
